@@ -1,0 +1,18 @@
+{
+  "name": "amr",
+  "version": "1.0.1",
+  "description": "AMR Codec in Javascript",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "ZMY",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^4.34.6"
+  },
+  "type": "module"
+}
