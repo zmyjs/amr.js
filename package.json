@@ -12,6 +12,7 @@
   "author": "ZMY",
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.34.6"
   },
   "type": "module"

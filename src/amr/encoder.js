@@ -1,4 +1,5 @@
 import opencoreamr from './libamr-nb.js';
+import { AMRConfig } from './utils.js';
 
 function AMREncoder(options) {
     this.params = options;
@@ -7,7 +8,7 @@ function AMREncoder(options) {
 
     this.frame_size = 160;
 
-    this.block_size = AMR.modes[this.mode];
+    this.block_size = AMRConfig.modes[this.mode];
 
     this.dtx = (options.dtx + 0) || 0;
 }
@@ -39,7 +40,7 @@ AMREncoder.prototype.read = function (offset, length, data) {
 
 AMREncoder.prototype.writeMagicNumber = function () {
     for (var i = -1; ++i < 6;) {
-        this.output[i] = AMR.MAGIC_NUMBER[i];
+        this.output[i] = AMRConfig.MAGIC_NUMBER[i];
     }
 }
 

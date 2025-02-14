@@ -1,4 +1,5 @@
 import opencoreamr from './libamr-nb.js';
+import { AMRConfig } from './utils.js';
 import { Binary } from '../pcmdata/index.js';
 
 /**
@@ -37,7 +38,7 @@ AMRDecoder.prototype.validate = function (magic) {
     }
 
     for (var i = -1; ++i < 6;) {
-        if (magic[i] != AMR.MAGIC_NUMBER[i]) {
+        if (magic[i] != AMRConfig.MAGIC_NUMBER[i]) {
             return false
         }
     }
@@ -53,7 +54,7 @@ AMRDecoder.prototype.read = function (offset, data) {
     var is_str = data.constructor == String.prototype.constructor;
     var dec_mode = is_str ? Binary.toUint8(data[0]) : data[0];
 
-    var nb = AMR.modes[(dec_mode >> 3) & 0x000F];
+    var nb = AMRConfig.modes[(dec_mode >> 3) & 0x000F];
     var input_addr = this.input
         , len = offset + nb > data.length ? data.length - offset : nb
         , bits;
