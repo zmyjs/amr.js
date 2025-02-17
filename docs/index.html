@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AMR</title>
+</head>
+
+<body>
+	<p>
+		<input type="file" name="file" id="file" accept=".amr">
+		<button type="button" id="decode">Decode</button>
+	</p>
+	<p>
+		<button type="button" id="play">Play</button>
+	</p>
+	<p>
+		<audio id="audio" controls></audio>
+	</p>
+
+	<script src="../dist/amrplayer.js"></script>
+	<script type="module">
+		const elPlay = document.getElementById('play');
+		const elDecode = document.getElementById('decode');
+		const elFile = document.getElementById('file');
+		const elAudio = document.getElementById('audio');
+
+		const amrPlayer = new AMRPlayer();
+
+		console.info(amrPlayer);
+
+		elDecode.addEventListener('click', async function () {
+			const file = elFile.files[0];
+
+			if (file) {
+				await amrPlayer.setBlob(file);
+				elAudio.src = amrPlayer.getWAV();
+				amrPlayer.audio = amrPlayer.getAudio(console.log);
+			} else {
+				alert('Please select an AMR file');
+			}
+		});
+
+		elPlay.addEventListener('click', function () {
+			if (amrPlayer.audio) {
+				amrPlayer.audio.toggle();
+			} else {
+				alert('Please decode first');
+			}
+		});
+	</script>
+</body>
+
+</html>

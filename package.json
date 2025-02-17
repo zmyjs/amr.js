@@ -1,19 +1,22 @@
 {
   "name": "amr",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "AMR Codec in Javascript",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "dist/amrplayer.cjs.js",
+  "module": "dist/amrplayer.es.js",
+  "browser": "dist/amrplayer.js",
   "scripts": {
     "build": "rollup -c"
   },
   "author": "ZMY",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.34.6"
   },
-  "type": "module"
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ]
 }
