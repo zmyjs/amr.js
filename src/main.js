@@ -1,7 +1,6 @@
 import AMR from './amr/amr.js';
 import { toWAV } from './amr/utils.js';
 
-
 class AMRAudio {
     constructor(float32Array) {
         this.createContext(float32Array);

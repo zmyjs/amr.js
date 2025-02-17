@@ -1,5 +1,5 @@
 {
-  "name": "amr",
+  "name": "amrplayer",
   "version": "2.0.0",
   "description": "AMR Codec in Javascript",
   "main": "dist/amrplayer.cjs.js",
