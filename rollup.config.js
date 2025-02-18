@@ -14,7 +14,6 @@ function getOutputItem(format, suffix) {
     return {
         file: `dist/amrplayer.${suffix}`,
         format,
-        strict: false,
         banner,
         plugins: [terser()],
     };

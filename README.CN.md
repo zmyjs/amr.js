@@ -1,9 +1,12 @@
 # AMRPlayer
 
-AMRPlayer 是 [amr.js](https://github.com/jpemartins/amr.js) 的现代化版本，支持 AMR 音频格式的加载和播放。从我本次更新时起，原版库已经 13 年未更新，没有任何文档，并使用了多个全局变量，不利于模块化。
+AMRPlayer 是 [amr.js](https://github.com/jpemartins/amr.js) 的现代化版本，支持 AMR 音频格式的加载和播放。
+
+amr.js 已经停止更新，其使用了大量全局变量，不支持严格模式，不支持模块化，并且缺少文档。
+
 本项目对其进行了现代化改造，支持 ES Module、CommonJS 和 IIFE 格式，兼容现代构建工具（如 Webpack、Rollup、Vite 等）。并加入播放控制支持、以及便捷的数据写入方式。
 
-> 我刚好在项目中用到 AMR音频解释，发现可选择的库并不多，amr.js虽然缺少维护但是仍然可用，感谢原作者们的付出，因此也把我的成果分享给大家。
+> 我在项目中用到AMR音频解释，发现可选择的库并不多，amr.js 虽然缺少维护但是仍然可用，感谢原作者们的付出，因此也把我的成果分享给大家。
 
 [English](./README.md)
 
@@ -12,8 +15,8 @@ AMRPlayer 是 [amr.js](https://github.com/jpemartins/amr.js) 的现代化版本�
 - 方便加载AMR音频文件。
 - 提供音频播放控制。
 - 支持将AMR音频转换为WAV格式。
-- 兼容现代 JavaScript 构建工具。
-- 不再使用多个全局变量，模块化环境不需要全局变量，在浏览器环境只暴露一个全局变量。
+- 支持严格模式，支持模块化，兼容现代 JavaScript 构建工具。
+- 不再使用多个全局变量，在浏览器环境只暴露一个全局变量。
 
 ## 安装
 

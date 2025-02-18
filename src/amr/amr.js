@@ -5,9 +5,9 @@ function AMR(params) {
     !params && (params = {});
     this.params = params;
 
-    this.frame_size = 320 || params.frame_size;
+    this.frame_size = params.frame_size || 320;
 
-    this.ring_size = 2304 || params.ring_size;
+    this.ring_size = params.ring_size || 2304;
 
     this.linoffset = 0;
 
@@ -66,7 +66,7 @@ AMR.prototype.encode = function (data, isFile) {
     }
 
     // ring spin
-    for (var i = -1, j = this.ringoffset; ++i < data.length; ++j) {
+    for (let i = -1, j = this.ringoffset; ++i < data.length; ++j) {
         this.ring[j] = data[i];
     }
 
@@ -81,7 +81,7 @@ AMR.prototype.encode = function (data, isFile) {
     }
 
     // buffer fill
-    for (var i = -1; ++i < this.linbuf.length;) {
+    for (let i = 0, l = this.linbuf.length; i < l; i++) {
         this.linbuf[i] = this.ring[this.linoffset + i];
     }
 
