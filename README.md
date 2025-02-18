@@ -1,9 +1,11 @@
 # AMRPlayer
 
-AMRPlayer is a modern audio player library based on [amr.js](https://github.com/jpemartins/amr.js), supporting the loading and playback of AMR audio format. As of my latest update, the original library has not been updated for 13 years, lacks documentation, and uses multiple global variables, which is not conducive to modularity. 
+AMRPlayer is a modernized version of [amr.js](https://github.com/jpemartins/amr.js), supporting the loading and playback of AMR audio format. As of my latest update, the original library has not been updated for 13 years, lacks documentation, and uses multiple global variables, which is not conducive to modularity. 
 This project has modernized it, supporting ES Module, CommonJS, and IIFE formats, and is compatible with modern build tools (such as Webpack, Rollup, Vite, etc.). It also adds playback control support and convenient data writing methods.
 
 > I happened to use AMR audio decoding in my project and found that there are not many libraries to choose from. Although amr.js lacks maintenance, it is still usable. Thanks to the efforts of the original authors, I am also sharing my results with everyone.
+
+[中文](./README.CN.md)
 
 ## Features
 
