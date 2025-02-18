@@ -4,50 +4,91 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AMR</title>
+	<title>AMRPlayer</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			color: #333333;
+			margin: 0;
+		}
+
+		#app {
+			min-height: 100vh;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+		}
+
+		main {
+			flex: auto;
+		}
+
+		footer {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
-	<main>
-		<p>Select File -> Decode -> Play</p>
-		<p>
-			<input type="file" name="file" id="file" accept=".amr">
-		</p>
-		<p>
-			<button type="button" id="decode">Decode</button>
-			<span id="decode-result"></span>
-		</p>
-		<p>
-			<button type="button" id="play">Play</button>
-			<span id="play-result"></span>
-		</p>
-		<p>
-			<span>WAV</span>
-			<audio id="audio" controls></audio>
-			<a id="link" download="audio">Download</a>
-		</p>
-	</main>
+	<div id="app">
+		<header>
+			<h1>AMRPlayer</h1>
+			<h2>AMRPlayer is a modernized version of amr.js, supporting the loading and playback of AMR audio format.
+			</h2>
+		</header>
 
-	<script src="../dist/amrplayer.js"></script>
+		<main>
+			<p>Select File -> Decode -> Play</p>
+			<p>
+				<input type="file" name="file" id="file" accept=".amr">
+			</p>
+			<p>
+				<button type="button" id="decode">Decode</button>
+				<span id="decode-result"></span>
+			</p>
+			<p>
+				<button type="button" id="play">Play</button>
+				<span id="play-result"></span>
+			</p>
+			<p>
+				<span>WAV</span>
+				<audio id="audio" controls></audio>
+				<a id="link" download="audio">Download</a>
+			</p>
+		</main>
+
+		<footer>ZMY</footer>
+	</div>
+
+	<!-- <script src="../dist/amrplayer.js"></script> -->
 	<script type="module">
-		const amrPlayer = new AMRPlayer();
-		let amrAudio, file;
+		import AMRPlayer from '../dist/AMRPlayer.es.js';
+
+		const amrplayer = new AMRPlayer();
+
+		let amraudio, file;
 
 		function updateState() {
-			document.getElementById('play-result').textContent = amrAudio.state;
+			document.getElementById('play-result').textContent = amraudio.state;
 		}
 
 		document.getElementById('decode').addEventListener('click', async function () {
 			file = document.getElementById('file').files[0];
 
 			if (file) {
-				await amrPlayer.setBlob(file);
-				const url = amrPlayer.getWAV();
+				await amrplayer.setBlob(file);
+
+				const url = amrplayer.getWAV();
 
 				document.getElementById('audio').src = url;
 				document.getElementById('link').href = url;
 
-				amrAudio = amrPlayer.getAudio(updateState);
+				amraudio = amrplayer.getAudio(updateState);
 
 				document.getElementById('decode-result').textContent = 'Ready';
 			} else {
@@ -56,8 +97,8 @@
 		});
 
 		document.getElementById('play').addEventListener('click', function () {
-			if (amrAudio) {
-				amrAudio.toggle().then(updateState);
+			if (amraudio) {
+				amraudio.toggle().then(updateState);
 			} else {
 				alert('Please decode');
 			}
