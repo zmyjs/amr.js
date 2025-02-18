@@ -142,7 +142,7 @@ class AMRPlayer extends AMR {
     /**
      * Converts the stored Float32Array to a WAV format.
      *
-     * @returns {ArrayBuffer} The WAV formatted audio data.
+     * @returns {String} The WAV formatted audio data.
      */
     getWAV() {
         return toWAV(this.float32Array);

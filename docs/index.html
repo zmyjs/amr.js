@@ -8,45 +8,58 @@
 </head>
 
 <body>
-	<p>
-		<input type="file" name="file" id="file" accept=".amr">
-		<button type="button" id="decode">Decode</button>
-	</p>
-	<p>
-		<button type="button" id="play">Play</button>
-	</p>
-	<p>
-		<audio id="audio" controls></audio>
-	</p>
+	<main>
+		<p>Select File -> Decode -> Play</p>
+		<p>
+			<input type="file" name="file" id="file" accept=".amr">
+		</p>
+		<p>
+			<button type="button" id="decode">Decode</button>
+			<span id="decode-result"></span>
+		</p>
+		<p>
+			<button type="button" id="play">Play</button>
+			<span id="play-result"></span>
+		</p>
+		<p>
+			<span>WAV</span>
+			<audio id="audio" controls></audio>
+			<a id="link" download="audio">Download</a>
+		</p>
+	</main>
 
 	<script src="../dist/amrplayer.js"></script>
 	<script type="module">
-		const elPlay = document.getElementById('play');
-		const elDecode = document.getElementById('decode');
-		const elFile = document.getElementById('file');
-		const elAudio = document.getElementById('audio');
-
 		const amrPlayer = new AMRPlayer();
+		let amrAudio, file;
 
-		console.info(amrPlayer);
+		function updateState() {
+			document.getElementById('play-result').textContent = amrAudio.state;
+		}
 
-		elDecode.addEventListener('click', async function () {
-			const file = elFile.files[0];
+		document.getElementById('decode').addEventListener('click', async function () {
+			file = document.getElementById('file').files[0];
 
 			if (file) {
 				await amrPlayer.setBlob(file);
-				elAudio.src = amrPlayer.getWAV();
-				amrPlayer.audio = amrPlayer.getAudio(console.log);
+				const url = amrPlayer.getWAV();
+
+				document.getElementById('audio').src = url;
+				document.getElementById('link').href = url;
+
+				amrAudio = amrPlayer.getAudio(updateState);
+
+				document.getElementById('decode-result').textContent = 'Ready';
 			} else {
 				alert('Please select an AMR file');
 			}
 		});
 
-		elPlay.addEventListener('click', function () {
-			if (amrPlayer.audio) {
-				amrPlayer.audio.toggle();
+		document.getElementById('play').addEventListener('click', function () {
+			if (amrAudio) {
+				amrAudio.toggle().then(updateState);
 			} else {
-				alert('Please decode first');
+				alert('Please decode');
 			}
 		});
 	</script>
