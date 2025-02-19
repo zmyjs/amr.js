@@ -1,5 +1,7 @@
 # AMRPlayer
 
+[![npm](https://img.shields.io/npm/v/amrplayer.svg)](https://www.npmjs.com/package/amrplayer)
+
 AMRPlayer 是 [amr.js](https://github.com/jpemartins/amr.js) 的现代化版本，支持 AMR 音频格式的加载和播放。
 
 amr.js 已经停止更新，其使用了大量全局变量，不支持严格模式，不支持模块化，并且缺少文档。
@@ -205,3 +207,7 @@ console.log('当前音频状态:', amraudio.state);
 当播放结束时自动调用。自动结束或调用`AMRAudio.stop()`都会触发。
 
 ---
+
+## 许可证
+
+本项目基于 MIT 许可证开源。详情请参阅 [LICENSE](LICENSE) 文件。

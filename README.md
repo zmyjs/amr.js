@@ -1,5 +1,7 @@
 # AMRPlayer
 
+[![npm](https://img.shields.io/npm/v/amrplayer.svg)](https://www.npmjs.com/package/amrplayer)
+
 AMRPlayer is a modernized version of [amr.js](https://github.com/jpemartins/amr.js), supporting the loading and playback of AMR audio format.
 
 amr.js has ceased updates, utilizing numerous global variables, lacking support for strict mode, not supporting modularity, and missing documentation.
@@ -205,3 +207,7 @@ Gets the current audio playback state: `'stopped', 'running', 'suspended'`.
 Automatically called when playback ends. Triggered by automatic end or calling `AMRAudio.stop()`.
 
 ---
+
+## License
+
+This project is open-sourced under the MIT license. For more details, please refer to the [LICENSE](LICENSE) file.
