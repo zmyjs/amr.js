@@ -205,7 +205,3 @@ Gets the current audio playback state: `'stopped', 'running', 'suspended'`.
 Automatically called when playback ends. Triggered by automatic end or calling `AMRAudio.stop()`.
 
 ---
-
-## License
-
-This project is open-sourced under the MIT license. For more details, please refer to the [LICENSE](LICENSE) file.
